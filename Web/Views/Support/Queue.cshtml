@@ -1,0 +1,57 @@
+﻿@using Web.Data
+@model List<SupportRequest>
+@{
+    ViewData["Title"] = "Support queue";
+}
+
+<div class="text-center">
+    <h1 class="display-4">@ViewData["Title"]</h1>
+</div>
+
+<div class="container">
+    @foreach (var item in Model)
+    {
+        @switch (item.State)
+        {
+            case SupportRequestState.InQueue:
+            {
+                <div class="row">
+                    <div class="col-2">@item.Id</div>
+                    <div class="col-2">@item.Head</div>
+                    <div class="col-2">In queue</div>
+                </div>
+            }
+                break;
+            case SupportRequestState.InProcessing:
+            {
+                <div class="row" style="background-color:#e1e1e1">
+                    <div class="col-2">@item.Id</div>
+                    <div class="col-2">@item.Head</div>
+                    <div class="col-2">In Processing</div>
+                    <div class="col-2">@item.Support.UserName</div>
+                </div>
+            }
+                break;
+            case SupportRequestState.IsDone:
+            {
+                <div class="row" style="background-color:#7aff82">
+                    <div class="col-2">@item.Id</div>
+                    <div class="col-2">@item.Head</div>
+                    <div class="col-2">Done in @item.DoneTime.ToString()</div>
+                    <div class="col-2">Took @((item.DoneTime - item.Created).ToString())</div>
+                    <div class="col-2">@item.Support.UserName</div>
+                </div>
+            }
+                break;
+            case SupportRequestState.IsDeclined:
+            {
+                <div class="row" style="background-color:#ff7a7a">
+                    <div class="col-2">@item.Id</div>
+                    <div class="col-2">@item.Head</div>
+                    <div class="col-2">Declined</div>
+                </div>
+            }
+                break;
+        }
+    }
+</div>

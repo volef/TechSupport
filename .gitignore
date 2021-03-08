@@ -1,0 +1,7 @@
+﻿/.idea/
+/.vs/
+/Web/obj/
+/Web/bin/
+/RequestSender/bin/
+/RequestSender/obj/
+Web/appsettings.Development.json

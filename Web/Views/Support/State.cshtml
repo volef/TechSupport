@@ -1,0 +1,35 @@
+﻿@using Web.Data
+@using Web.Data.SupportIdentity
+@model List<Web.Data.SupportIdentity.SupportIdentity>
+@{
+    ViewData["Title"] = "Employees state";
+}
+
+<div class="text-center">
+    <h1 class="display-4">@ViewData["Title"]</h1>
+</div>
+
+<div class="container">
+    @foreach (var item in Model)
+    {
+        @switch (item.State)
+        {
+            case SupportIdentityState.Ready:
+            {
+                <div class="row" style="background-color:#e1e1e1">
+                    <div class="col-2">@item.Owner.UserName</div>
+                    <div class="col-2">Ready</div>
+                </div>
+            }
+                break;
+            case SupportIdentityState.Working:
+            {
+                <div class="row" style="background-color:#7aff82">
+                    <div class="col-2">@item.Owner.UserName</div>
+                    <div class="col-2">Working</div>
+                </div>
+            }
+                break;
+        }
+    }
+</div>

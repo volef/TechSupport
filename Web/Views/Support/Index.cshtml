@@ -1,0 +1,53 @@
+﻿@{
+    ViewData["Title"] = "Support";
+}
+
+<div class="text-center">
+    <h1 class="display-4">@ViewData["Title"]</h1>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-3">
+            <button type="button" class="btn btn-outline-success" id="sendButton">Done Request</button>
+        </div>
+        <div class="col-4">
+            <button type="button" class="btn btn-outline-primary" id="getButton">Get Request</button>
+        </div>
+        <div class="col-3">
+            <a asp-controller="Support" asp-action="Queue">
+                <input type="button" class="btn btn-outline-info" value="Request queue"/>
+            </a>
+        </div>
+        <div class="col-1">
+            <a asp-controller="Support" asp-action="State">
+                <input type="button" class="btn btn-outline-info" value="Employeers state"/>
+            </a>
+        </div>
+    </div>
+</div>
+<div class="container-fluid center-top">
+    <div id="disconnectcard" class="card text-white bg-danger m-3">
+        <div class="card-header">Oops...</div>
+        <div class="card-body">
+            <h5 class="card-title">Connection with server lost</h5>
+            <p class="card-text">Try reload page</p>
+        </div>
+    </div>
+    <div class="col-12">
+        <hr/>
+    </div>
+</div>
+<div class="container-fluid center-top">
+    <div class="col-6">
+        <div id="request" class="card m-3">
+            <div class="card-body">
+                <h5 id="request_name" class="card-title">---</h5>
+                <h6 id="request_id" class="card-subtitle mb-2 text-muted">---</h6>
+                <p id="request_text" class="card-text">---</p>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/js/signalr/dist/browser/signalr.js"></script>
+<script src="~/js/supporthub.js"></script>
